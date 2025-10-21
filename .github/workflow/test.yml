@@ -1,0 +1,19 @@
+# .github/workflows/test.yml
+name: Security Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Tests
+        run: |
+          cd /app
+          pytest tests/ --html=report.html
+      - name: Upload Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: report.html
