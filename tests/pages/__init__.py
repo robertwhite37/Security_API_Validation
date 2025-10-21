@@ -1,0 +1,1 @@
+"""Page Object Model for API endpoints"""
